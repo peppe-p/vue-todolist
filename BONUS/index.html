@@ -23,6 +23,8 @@
             <!-- ##### PANNELLO LISTA TASK ##### -->
             <div class="taskPanel">
                 <div class="taskList" v-if="taskList.length > 0">
+                    <h3>- Task list</h3>
+                    <hr>
                     <div class="task" v-for="(task, i) in taskList">
                         <input type="text" class="taskName" v-model="task">
                         <i class="fas fa-check" @click="completeTask(i)"></i>
@@ -32,23 +34,30 @@
 
                 <!-- ##### PANNELLO VISIBILE SOLO SE NON VI SONO TASK ##### -->
                 <div class="noTask" v-else>
+                    <h3>- Task list</h3>
+                    <hr>
                     <h4>Nothing to do 🤷‍♂️</h4>
                 </div>
 
 
                 <!-- ##### PANNELLO TASK COMPLETATE ##### -->
-                <div class="completedPanel">
+                <div class="completedPanel" v-show="complHaveEl">
+                    <h3>- Completed Task</h3>
+                    <hr>
                     <div class="completedTask" v-for="(cTask, i) in completedList">
                         <h4>{{cTask}}</h4>
-                        <i class="fas fa-reply"></i>
+                        <i class="fas fa-reply" @click="repeatTask(i)"></i>
                     </div>
                 </div>
 
 
                 <!-- ##### PANNELLO CESTINO ##### -->
-                <div class="removedPanel">
+                <div class="removedPanel" v-show="removHaveEl">
+                    <h3>- Recycle Bin <i class="fas fa-trash-alt" @click="deleteAll()"></i></h3>
+                    <hr>
                     <div class="deletedTask" v-for="(dTask, i) in removedList">
                         <h4>{{dTask}}</h4>
+                        <i class="fas fa-minus-square" @click="recycleTask(i)"></i>
                     </div>
                 </div>
 

@@ -2,6 +2,17 @@
     margin: 0;
     padding: 0;
 }
+
+body {
+    background-color: tan;
+}
+
+button {
+    padding: 2px;
+    width: 100px;
+}
+
+
 #root {
     height: 100vh;
     width: 100%;
@@ -13,6 +24,13 @@
 .form {
     display: flex;
     flex-direction: column;
+}
+
+.taskList, .completedPanel, .removedPanel, .noTask {
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    margin:  10px;
 }
 
 .taskPanel {
@@ -39,6 +57,7 @@ i:hover {
     border: none;
     display: inline-block;
     width: 120px;
+    background-color: transparent;
 }
 .taskName:focus-visible{
     outline: none;
