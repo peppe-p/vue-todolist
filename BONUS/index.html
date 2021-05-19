@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Task Manager</title>
+</head>
+
+<body>
+
+    <main id="root">
+        <div class="form">
+            <!-- ##### FORM PER AGGIUNGERE TASK ##### -->
+            <div class="addDiv">
+                <input type="text" :class="checkError" v-model="newTask" placeholder="Add your ask...">
+                <button @click="addTask">Add</button>
+            </div>
+
+            <!-- ##### PANNELLO LISTA TASK ##### -->
+            <div class="taskPanel">
+                <div class="taskList" v-if="taskList.length > 0">
+                    <div class="task" v-for="(task, i) in taskList">
+                        <input type="text" class="taskName" v-model="task">
+                        <i class="fas fa-check" @click="completeTask(i)"></i>
+                        <i class="fas fa-times" @click="removeTask(i)"></i>
+                    </div>
+                </div>
+
+                <!-- ##### PANNELLO VISIBILE SOLO SE NON VI SONO TASK ##### -->
+                <div class="noTask" v-else>
+                    <h4>Nothing to do 🤷‍♂️</h4>
+                </div>
+
+
+                <!-- ##### PANNELLO TASK COMPLETATE ##### -->
+                <div class="completedPanel">
+                    <div class="completedTask" v-for="(cTask, i) in completedList">
+                        <h4>{{cTask}}</h4>
+                        <i class="fas fa-reply"></i>
+                    </div>
+                </div>
+
+
+                <!-- ##### PANNELLO CESTINO ##### -->
+                <div class="removedPanel">
+                    <div class="deletedTask" v-for="(dTask, i) in removedList">
+                        <h4>{{dTask}}</h4>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="./assets/js/main.js"></script>
+</body>
+
+</html>
