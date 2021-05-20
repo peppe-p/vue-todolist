@@ -26,7 +26,7 @@
                     <h3>- Task list</h3>
                     <hr>
                     <div class="task" v-for="(task, i) in taskList">
-                        <input type="text" class="taskName" v-model="task">
+                        <input type="text" class="taskName" :value="task">
                         <i class="fas fa-check" @click="completeTask(i)"></i>
                         <i class="fas fa-times" @click="removeTask(i)"></i>
                     </div>

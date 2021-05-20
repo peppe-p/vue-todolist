@@ -12,6 +12,9 @@ button {
     width: 100px;
 }
 
+hr {
+    margin-bottom: 10px;
+}
 
 #root {
     height: 100vh;

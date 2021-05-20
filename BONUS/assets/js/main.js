@@ -31,7 +31,7 @@ const app = new Vue({
         completeTask(i) {
             this.completedList.push(this.taskList[i]);
             this.taskList.splice(i, 1);
-            if (this.completedList.lenght !== 0) {
+            if (this.completedList.length !== 0) {
                 this.complHaveEl = true;
             }
         },
@@ -39,28 +39,29 @@ const app = new Vue({
         removeTask(i) {
             this.removedList.push(this.taskList[i]);
             this.taskList.splice(i, 1);
-            if (this.removedList.lenght !== 0) {
+            if (this.removedList.length !== 0) {
                 return this.removHaveEl = true;
             }
         },
         repeatTask(i) {
             this.taskList.push(this.completedList[i]);
             this.completedList.splice(i, 1);
-            if (this.completedList.lenght == 0) {
+            if (this.completedList.length == 0) {
                 return this.complHaveEl = false;
             }
         },
         recycleTask(i) {
             this.taskList.push(this.removedList[i]);
             this.removedList.splice(i, 1);
-            if (this.removedList.lenght == 0) {
+            if (this.removedList.length == 0) {
                 return this.removHaveEl = false;
             }
         },
         deleteAll() {
-            this.confirm = prompt("U want delete all?   [Y/N]");
-            if (this.confirm == "y") {
-                return this.removedList.splice(0);
+            this.confirm = prompt("U want delete all?   [Y/N]").toUpperCase();
+            if (this.confirm == "Y") {
+                this.removedList.splice(0);
+                this.removHaveEl = false;
             }
         },
     },
